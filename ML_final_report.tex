@@ -98,16 +98,16 @@ On top of these base learners, several ensemble strategies are implemented. A ba
 
 Evaluation on the held--out test set shows that all models perform competitively, with the stacking ensemble clearly outperforming the others in terms of accuracy. The tuned logistic regression model achieves an accuracy of approximately \(0.86\), precision \(0.87\), recall \(0.89\) and F1--score \(0.88\), indicating a well balanced trade--off between sensitivity and specificity. The linear regression baseline reaches very similar values, confirming that a simple linear decision boundary already captures a large fraction of the signal in the data.
 
-Among the ensemble methods, the soft--voting classifier improves over the single logistic model and yields an accuracy of \(0.892\), precision \(0.935\), recall \(0.879\) and F1--score \(0.906\). The confusion matrix
+Among the ensemble methods, the soft--voting classifier improves over the single logistic model and yields an accuracy of \(0.909\), precision \(0.972\), recall \(0.872\) and F1--score \(0.919\). The confusion matrix
 
 \[
 \begin{bmatrix}
-7352 & 725 \\
-1440 & 10483
+7779 & 298 \\
+1528 & 10395
 \end{bmatrix}
 \]
 
-shows that most diabetic and non--diabetic individuals are correctly classified, with relatively few false positives and false negatives. Hard voting and bagging ensembles obtain accuracies of \(0.8745\) and \(0.8571\) respectively, while the stacking ensemble reaches the highest test accuracy of \(0.9203\), as summarized in Table~\ref{tab:results} and illustrated in Figure~\ref{fig:ensemble}.
+shows that most diabetic and non--diabetic individuals are correctly classified, with relatively few false positives and false negatives. Hard voting and bagging ensembles obtain accuracies of \(0.892\) and \(0.857\) respectively, while the stacking ensemble reaches the highest test accuracy of \(0.920\), as summarized in Table~\ref{tab:results} and illustrated in Figure~\ref{fig:ensemble}.
 
 \begin{table}[h!]
     \centering
@@ -120,10 +120,10 @@ shows that most diabetic and non--diabetic individuals are correctly classified,
         \midrule
         Linear Regression (threshold 0.5) & $0.86$ \\
         Logistic Regression (tuned)       & $0.86$ \\
-        Soft Voting Ensemble              & $0.8918$ \\
-        Hard Voting Ensemble              & $0.8745$ \\
-        Bagging Ensemble                  & $0.8571$ \\
-        Stacking Ensemble                 & $0.9203$ \\
+        Soft Voting Ensemble              & $0.909$ \\
+        Hard Voting Ensemble              & $0.892$ \\
+        Bagging Ensemble                  & $0.857$ \\
+        Stacking Ensemble                 & $0.920$ \\
         \bottomrule
     \end{tabular}
     
@@ -141,7 +141,7 @@ From a screening perspective, the precision--recall trade--off is central. The l
 
 \section{7. Conclusion}
 
-This project implemented a complete supervised learning pipeline to predict diagnosed diabetes from a rich set of demographic, lifestyle and clinical indicators. After careful preprocessing with one--hot encoding and stratified train--test splitting, several models were trained and compared, including linear regression, logistic regression, decision trees, SVC and multiple ensemble methods. The tuned logistic and linear models achieved balanced performance with accuracy around $0.86$, precision $0.87$ and recall $0.89$, showing that even relatively simple linear decision boundaries can capture much of the signal present in the data. Ensemble approaches further improved predictive accuracy: the soft--voting classifier reached an accuracy of $0.892$ with F1--score $0.906$, while the stacking ensemble achieved the best overall accuracy of approximately $0.92$.
+This project implemented a complete supervised learning pipeline to predict diagnosed diabetes from a rich set of demographic, lifestyle and clinical indicators. After careful preprocessing with one--hot encoding and stratified train--test splitting, several models were trained and compared, including linear regression, logistic regression, decision trees, SVC and multiple ensemble methods. The tuned logistic and linear models achieved balanced performance with accuracy around $0.86$, precision $0.87$ and recall $0.89$, showing that even relatively simple linear decision boundaries can capture much of the signal present in the data. Ensemble approaches further improved predictive accuracy: the soft--voting classifier reached an accuracy of $0.909$ with F1--score $0.906$, while the stacking ensemble achieved the best overall accuracy of approximately $0.92$.
 
 From a business and clinical perspective, these results indicate that routinely collected health indicators can be leveraged to support early diabetes screening and risk stratification. The confusion matrices highlight that both the logistic and ensemble models maintain low rates of false negatives, which is essential when the cost of missing a diabetic patient is high, while also keeping false positives at a manageable level. Nevertheless, the study has several limitations: the use of a single synthetic dataset, the absence of external validation, and the lack of explicit cost--sensitive optimisation all constrain the immediate deployability of the models. Future work should therefore focus on validating the pipeline on real--world cohorts, exploring class--weighted or cost--aware training objectives, applying dimensionality reduction and feature selection, and involving domain experts to ensure that the final models align with clinical priorities and ethical considerations.
 
